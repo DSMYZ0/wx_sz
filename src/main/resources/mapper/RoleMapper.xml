@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wx.mapper.RoleMapper">
+
+    <insert id="addRole" parameterType="role">
+        INSERT INTO role(name) VALUES (#{name})
+    </insert>
+
+    <select id="queryRoleList" resultType="role">
+        SELECT * FROM role
+    </select>
+
+    <select id="queryRoleById" resultType="role">
+        SELECT * FROM role WHERE id=#{id}
+    </select>
+
+</mapper>

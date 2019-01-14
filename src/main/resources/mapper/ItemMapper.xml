@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wx.mapper.ItemMapper">
+
+    <update id="updateItem" parameterType="item">
+        UPDATE item
+        <set>
+            <if test="user!=null and user.id!=null">user_id=#{user.id},</if>
+            <if test="category!=null and category.id!=null">category_id=#{category.id},</if>
+            <if test="title">title=#{title},</if>
+            <if test="time!=null">time=#{time},</if>
+            <if test="style!=null">style=#{style},</if>
+            <if test="areas!=null">areas=#{areas},</if>
+            <if test="address!=null">address=#{address},</if>
+            <if test="detailDesc!=null">detail_desc=#{detailDesc},</if>
+            <if test="img1!=null">img1=#{img1},</if>
+            <if test="img2!=null">img2=#{img2},</if>
+            <if test="img3!=null">img3=#{img3}</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+    
+    <insert id="addItem" parameterType="item">
+        INSERT INTO item(user_id,category_id,title,time,style,areas,address,detail_desc,img1,img2,img3)
+        VALUES
+        (
+          #{user.id},
+          #{category.id},
+          #{title},
+          #{time},
+          #{style},
+          #{areas},
+          #{address},
+          #{detailDesc},
+          #{img1},
+          #{img2},
+          #{img3}
+        )
+    </insert>
+
+
+    <resultMap id="itemMap" type="item">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="time" property="time"/>
+        <result column="style" property="style"/>
+        <result column="areas" property="areas"/>
+        <result column="address" property="address"/>
+        <result column="detail_desc" property="detailDesc"/>
+        <result column="img1" property="img1"/>
+        <result column="img2" property="img2"/>
+        <result column="img3" property="img3"/>
+        <association property="user" javaType="user" column="user_id" select="com.wx.mapper.UserMapper.queryUserById"/>
+        <association property="category" javaType="category" column="category_id" select="com.wx.mapper.CategoryMapper.queryCategoryById"/>
+    </resultMap>
+
+    <select id="queryItemById" resultMap="itemMap">
+        SELECT * FROM item WHERE id=#{id}
+    </select>
+
+    <select id="queryItemList" resultMap="itemMap">
+        SELECT * FROM item
+    </select>
+</mapper>

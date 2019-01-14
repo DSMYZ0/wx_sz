@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wx.mapper.UserMapper">
+
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user(name,password,gender,openid,role_id) VALUES (#{name},#{password},#{gender},#{openid},#{role.id})
+    </insert>
+
+    <delete id="deleteUserById">
+        DELETE FROM user WHERE id=#{id}
+    </delete>
+
+    <update id="updateUser" parameterType="user">
+        UPDATE user
+        <set>
+            <if test="name!=null">name=#{name},</if>
+            <if test="password!=null">password=#{password},</if>
+            <if test="gender!=null">gender=#{gender},</if>
+            <if test="openid!=null">openid=#{openid},</if>
+            <if test="role!=null and role.id!=null">role_id = #{role.id}</if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <resultMap id="userMap" type="user">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="password" property="password"/>
+        <result column="gender" property="gender"/>
+        <result column="openid" property="openid"/>
+        <association property="role" javaType="role" column="role_id" select="com.wx.mapper.RoleMapper.queryRoleById"/>
+    </resultMap>
+
+    <select id="queryUserList" resultMap="userMap">
+        SELECT * FROM user
+    </select>
+
+    <select id="queryUserById" resultMap="userMap">
+        SELECT * FROM user WHERE id=#{id}
+    </select>
+
+
+
+</mapper>

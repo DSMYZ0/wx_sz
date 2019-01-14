@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wx.mapper.$CollectionMapper">
+
+    <insert id="addCollection" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO collection(user_id,item_id)
+        VALUES (#{userId},#{itemId})
+    </insert>
+
+    <delete id="deleteCollectionById">
+        DELETE FROM collection WHERE id=#{collectionId}
+    </delete>
+
+    <delete id="deleteCollectionByUserIdAndItemId">
+        DELETE FROM collection WHERE user_id=#{userId} AND item_id=#{itemId}
+    </delete>
+
+</mapper>
