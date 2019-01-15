@@ -32,4 +32,10 @@ public class RoleService {
         return roleMapper.queryRoleById(id);
 
     }
+
+    @Transactional
+    public Role queryRoleByName(String name){
+
+        return roleMapper.queryRoleByName(name);
+    }
 }

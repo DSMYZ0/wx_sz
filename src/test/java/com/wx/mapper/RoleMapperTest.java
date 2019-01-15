@@ -15,6 +15,12 @@ public class RoleMapperTest extends WxSzApplicationTests {
     private RoleMapper roleMapper;
 
     @Test
+    public void queryRoleByName(){
+        Role role = roleMapper.queryRoleByName("public");
+        System.out.println(role);
+    }
+
+    @Test
     public void addRole(){
         Role role = new Role();
         role.setName("public");

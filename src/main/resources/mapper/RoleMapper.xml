@@ -16,4 +16,8 @@
         SELECT * FROM role WHERE id=#{id}
     </select>
 
+    <select id="queryRoleByName" resultType="role">
+        SELECT * FROM role WHERE name=#{name}
+    </select>
+
 </mapper>

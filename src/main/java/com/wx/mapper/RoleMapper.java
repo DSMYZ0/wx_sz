@@ -15,4 +15,6 @@ public interface RoleMapper {
     List<Role> queryRoleList();
     //根据ID查询角色
     Role queryRoleById(Integer id);
+    //根据名字获取角色
+    Role queryRoleByName(String name);
 }

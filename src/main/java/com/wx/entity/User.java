@@ -11,6 +11,7 @@ public class User {
     private int gender;
     private String openid;
     private Role role;
+    private String avatarUrl;
 
     public User() {
     }
@@ -63,6 +64,14 @@ public class User {
         this.role = role;
     }
 
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -72,6 +81,7 @@ public class User {
                 ", gender=" + gender +
                 ", openid='" + openid + '\'' +
                 ", role=" + role +
+                ", avatarUrl='" + avatarUrl + '\'' +
                 '}';
     }
 }
