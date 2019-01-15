@@ -63,4 +63,8 @@
     <select id="queryItemList" resultMap="itemMap">
         SELECT * FROM item
     </select>
+
+    <delete id="deleteItem">
+        DELETE FROM item WHERE id=#{id}
+    </delete>
 </mapper>

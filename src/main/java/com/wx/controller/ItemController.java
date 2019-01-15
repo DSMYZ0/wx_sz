@@ -2,6 +2,8 @@ package com.wx.controller;
 
 import com.wx.entity.Item;
 import com.wx.service.ItemService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,9 +15,10 @@ import java.util.List;
 @RestController
 public class ItemController {
 
+    private static final Logger LOGGER  = LoggerFactory.getLogger(ItemController.class);
+
     @Autowired
     private ItemService itemService;
-
 
 
 
@@ -47,6 +50,7 @@ public class ItemController {
 
     @PostMapping("/addItem")
     public String addItem(@RequestBody Item item){
+        LOGGER.info("item={}",item);
         int row = itemService.addItem(item);
         if(row>0){
             return "ok";
@@ -57,6 +61,7 @@ public class ItemController {
 
     @PostMapping("/updateItem")
     public String updateItem(@RequestBody Item item){
+        LOGGER.info("item={}",item);
         int row = itemService.updateItem(item);
         if(row>0){
             return "ok";
