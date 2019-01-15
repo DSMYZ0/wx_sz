@@ -20,5 +20,5 @@ public interface $CollectionMapper {
     //获取我的收藏列表
     List<$Collection> queryCollectionByUserId(Integer userId);
     //获取收藏详情
-
+    $Collection queryCollectionById(Integer id);
 }

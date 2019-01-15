@@ -27,4 +27,8 @@
         SELECT * FROM collection WHERE user_id=#{userId}
     </select>
 
+    <select id="queryCollectionById" resultMap="colectionMap">
+        SELECT * FROM collection WHERE id=#{id}
+    </select>
+
 </mapper>
