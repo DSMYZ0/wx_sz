@@ -66,7 +66,6 @@ public class ItemService {
         responseResult.setXr(itemsxr);
         //寻宠启示
         Category categoryxc = categoryMapper.queryCategoryByName(CategoryEnums.XCQS.getName());
-        System.out.println("寻宠启示:"+categoryxc);
         List<Item> itemsxc = itemMapper.queryItemListByCategoryId(categoryxc.getId());
         responseResult.setXc(itemsxc);
         //失物招领
