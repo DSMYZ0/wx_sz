@@ -71,4 +71,8 @@
     <select id="queryItemListByCategoryId" resultMap="itemMap">
         SELECT * FROM item WHERE category_id=#{categoryId}
     </select>
+
+    <select id="queryItemListByUserId" resultMap="itemMap">
+        SELECT * FROM item WHERE user_id=#{userId}
+    </select>
 </mapper>

@@ -98,4 +98,9 @@ public class ItemService {
         return responseResult;
 
     }
+
+    @Transactional
+    public List<Item> queryItemListByUserId(Integer userId){
+        return itemMapper.queryItemListByUserId(userId);
+    }
 }

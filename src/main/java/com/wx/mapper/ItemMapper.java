@@ -48,4 +48,12 @@ public interface ItemMapper {
      * 通过分类获取列表
      */
     List<Item> queryItemListByCategoryId(Integer categoryId);
+
+    /**
+     * 通过用户ID获取用户列表
+     * @param userId
+     * @return
+     */
+    List<Item> queryItemListByUserId(Integer userId);
+
 }

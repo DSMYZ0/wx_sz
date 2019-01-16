@@ -1,5 +1,6 @@
 package com.wx.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.wx.dto.ItemRequest;
 import com.wx.dto.ItemResponse;
 import com.wx.dto.ResponseResult;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -28,6 +30,13 @@ public class ItemController {
     @Autowired
     private UserService userService;
 
+
+
+    @PostMapping("/queryItemListByUserId")
+    public List<Item> queryItemListByUserId(@RequestBody String userId){
+        List<Item> items = itemService.queryItemListByUserId(Integer.parseInt(JSON.parseObject(userId, Map.class).get("userId") + ""));
+        return items;
+    }
 
 
     @GetMapping("/queryItemList")
