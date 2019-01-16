@@ -31,7 +31,7 @@ public class LoginController {
         Map map = JSON.parseObject(code, Map.class);
         //授权微信服务器获取数据信息
         String wxUrl = "https://api.weixin.qq.com/sns/jscode2session?appid=wx2afad5ac66e7188d&secret=b3e47f34b4f8e2878d3c04ae92d31edb&js_code="+map.get("code")+"&grant_type=authorization_code";
-        System.out.println(wxUrl);
+       // System.out.println(wxUrl);
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(wxUrl);
         Map<String,String> retuMap = new HashMap<>();

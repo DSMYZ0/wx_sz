@@ -1,7 +1,10 @@
 package com.wx.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.wx.entity.Role;
 import com.wx.entity.User;
+import com.wx.enums.RoleEnums;
+import com.wx.service.RoleService;
 import com.wx.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +24,11 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RoleService roleService;
 
 
-    @GetMapping("/checkUserLogin")
+    @PostMapping("/checkUserLogin")
     public boolean checkUserLogin(@RequestBody String openid){
         LOGGER.info("openid={}",JSON.parseObject(openid, Map.class).get("openid"));
         return userService.checkUserLogin(JSON.parseObject(openid, Map.class).get("openid")+"");
@@ -32,7 +37,13 @@ public class UserController {
 
     @PostMapping("/addUser")
     public String addUser(@RequestBody User user){
-        LOGGER.info("user={}",user);
+        if(user.getPassword()==null || user.getPassword()==""){
+            user.setPassword("admin");
+        }
+        if(user.getRole()==null || user.getRole().getId()==null){
+            Role role = roleService.queryRoleByName(RoleEnums.PTYH.getMsg());
+            user.setRole(role);
+        }
         int row = userService.addUser(user);
         if(row>0){
             return "ok";

@@ -2,8 +2,8 @@ package com.wx.enums;
 
 public enum RoleEnums {
 
-    GLY("管理员"),
-    PTYH("普通用户");
+    GLY("admin"),
+    PTYH("public");
 
     private String msg;
 
