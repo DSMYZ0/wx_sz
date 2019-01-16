@@ -46,4 +46,9 @@ public class UserService {
         return user!=null?true:false;
     }
 
+    @Transactional
+    public User queryUserByOpenid(String openid){
+        return userMapper.queryUserByOpenId(openid);
+    }
+
 }

@@ -84,4 +84,10 @@ public class UserController {
         return userService.queryUserById(id);
 
     }
+
+    @GetMapping("/queryUserByOpenid")
+    public User queryUserByOpenid(@RequestBody String openid){
+        Map map = JSON.parseObject(openid, Map.class);
+        return userService.queryUserByOpenid(map.get("openid")+"");
+    }
 }
