@@ -40,9 +40,9 @@ public class $CollectionController {
     }
 
 
-    @GetMapping("/deleteCollectionByUserIdAndItemId")
-    public String deleteCollectionByUserIdAndItemId(Integer userId,Integer itemId){
-        int row = collectionService.deleteCollectionByUserIdAndItemId(userId, itemId);
+    @PostMapping("/deleteCollectionByUserIdAndItemId")
+    public String deleteCollectionByUserIdAndItemId(@RequestBody Map<String,Integer> map){
+        int row = collectionService.deleteCollectionByUserIdAndItemId(map.get("userid"), map.get("itemid"));
         if(row>0){
             return "ok";
         }else {
@@ -51,11 +51,9 @@ public class $CollectionController {
     }
 
     @PostMapping("/addCollection")
-    public String addCollection(Integer userId,Integer itemId){
-
-        LOGGER.info("userId={},itemId={}",userId,itemId);
-
-        int row = collectionService.addCollection(userId, itemId);
+    public String addCollection(@RequestBody Map<String,Integer> map){
+        LOGGER.info("map={}",map);
+        int row = collectionService.addCollection(map.get("userid"), map.get("itemid"));
         if(row>0){
             return "ok";
         }else {
