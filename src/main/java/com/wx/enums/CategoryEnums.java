@@ -2,8 +2,8 @@ package com.wx.enums;
 
 public enum CategoryEnums {
 
-    XWQS(1,"寻物启事"),
-    XRQS(2,"寻人启事"),
+    XWQS(1,"寻物启示"),
+    XRQS(2,"寻人启示"),
     XCQS(3,"寻宠启示"),
     SWZL(4,"失物招领")
     ;

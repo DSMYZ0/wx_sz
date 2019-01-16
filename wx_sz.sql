@@ -24,6 +24,7 @@ CREATE TABLE role(
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '主键',
 	name VARCHAR(255) NOT NULL COMMENT '角色名'
 )ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=UTF8 COMMENT='角色表';
+
 INSERT INTO role(name) VALUES("public"),("admin");
 
 --添加约束
@@ -35,7 +36,7 @@ CREATE TABLE category(
 	name VARCHAR(100) NOT NULL COMMENT '类目名称'
 )ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=UTF8 COMMENT='类目表';
 
-INSERT INTO category(name) VALUES("寻人启事"),("寻物启事"),("寻宠启事"),("失物招领");
+INSERT INTO category(name) VALUES("寻人启示"),("寻物启示"),("寻宠启示"),("失物招领");
 
 --项目表
 CREATE TABLE item(
