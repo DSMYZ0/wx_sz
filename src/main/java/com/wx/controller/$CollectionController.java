@@ -2,6 +2,7 @@ package com.wx.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.wx.entity.$Collection;
+import com.wx.entity.Item;
 import com.wx.service.$CollectionService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,8 +24,8 @@ public class $CollectionController {
     private $CollectionService collectionService;
 
     @PostMapping("/queryCollectionByUserId")
-    public List<$Collection> queryCollectionByUserId(Integer userId){
-        return collectionService.queryCollectionByUserId(userId);
+    public List<$Collection> queryCollectionByUserId(@RequestBody Map<String,Integer> map){
+        return collectionService.queryCollectionByUserId(map.get("userid"));
     }
 
     @PostMapping("/queryCollectionByUserIdAndItemId")
