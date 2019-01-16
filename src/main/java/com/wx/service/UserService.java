@@ -39,4 +39,10 @@ public class UserService {
         return userMapper.queryUserById(id);
     }
 
+    @Transactional
+    public boolean checkUserLogin(String openid){
+        User user = userMapper.queryUserByOpenId(openid);
+        return user!=null?true:false;
+    }
+
 }

@@ -67,4 +67,10 @@ public class UserMapperTest extends WxSzApplicationTests {
         System.out.println(row);
 
     }
+
+    @Test
+    public void queryUserByOpenId(){
+        User user = userMapper.queryUserByOpenId("eeeeeeeeeeeeeeeee3");
+        System.out.println(user);
+    }
 }

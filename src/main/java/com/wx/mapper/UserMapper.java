@@ -20,5 +20,7 @@ public interface UserMapper {
     List<User> queryUserList();
     //根据ID获取用户
     User queryUserById(Integer id);
+    //通过openid查询是否授权过
+    User queryUserByOpenId(String openid);
 
 }

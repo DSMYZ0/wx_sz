@@ -1,5 +1,6 @@
 package com.wx.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.wx.entity.User;
 import com.wx.service.UserService;
 import org.slf4j.Logger;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class UserController {
@@ -19,6 +21,14 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+
+    @GetMapping("/checkUserLogin")
+    public boolean checkUserLogin(@RequestBody String openid){
+        LOGGER.info("openid={}",JSON.parseObject(openid, Map.class).get("openid"));
+        return userService.checkUserLogin(JSON.parseObject(openid, Map.class).get("openid")+"");
+    }
+
 
     @PostMapping("/addUser")
     public String addUser(@RequestBody User user){
@@ -55,10 +65,12 @@ public class UserController {
     @GetMapping("/queryUserList")
     public List<User> queryUserList(){
         return userService.queryUserList();
+
     }
 
     @GetMapping("/queryUserById")
     public User queryUserById(Integer id){
         return userService.queryUserById(id);
+
     }
 }

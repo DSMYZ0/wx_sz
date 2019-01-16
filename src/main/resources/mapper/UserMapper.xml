@@ -41,6 +41,8 @@
         SELECT * FROM user WHERE id=#{id}
     </select>
 
-
+    <select id="queryUserByOpenId" resultMap="userMap">
+        SELECT * FROM user WHERE openid=#{openid}
+    </select>
 
 </mapper>
