@@ -1,6 +1,7 @@
 package com.wx.controller;
 
 import com.wx.dto.ItemRequest;
+import com.wx.dto.ItemResponse;
 import com.wx.dto.ResponseResult;
 import com.wx.entity.Item;
 import com.wx.entity.User;
@@ -31,13 +32,14 @@ public class ItemController {
 
     @GetMapping("/queryItemList")
     public ResponseResult queryItemList(){
-        return itemService.queryItemList();
+        ResponseResult result = itemService.queryItemList();
+        return result;
 
     }
 
 
     @GetMapping("/queryItemById")
-    public Item queryItemById(Integer id){
+    public ItemResponse queryItemById(Integer id){
         return itemService.queryItemById(id);
 
     }
