@@ -78,4 +78,11 @@ public class ItemMapperTest extends WxSzApplicationTests {
         System.out.println(row);
 
     }
+
+    @Test
+    public void queryItemListByCategoryId(){
+        List<Item> items = itemMapper.queryItemListByCategoryId(10);
+        System.out.println(items);
+
+    }
 }

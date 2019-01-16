@@ -1,5 +1,6 @@
 package com.wx.controller;
 
+import com.wx.dto.ResponseResult;
 import com.wx.entity.Item;
 import com.wx.service.ItemService;
 import org.slf4j.Logger;
@@ -10,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
 
 @RestController
 public class ItemController {
@@ -23,7 +23,7 @@ public class ItemController {
 
 
     @GetMapping("/queryItemList")
-    public List<Item> queryItemList(){
+    public ResponseResult queryItemList(){
         return itemService.queryItemList();
 
     }

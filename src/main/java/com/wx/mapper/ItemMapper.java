@@ -43,4 +43,9 @@ public interface ItemMapper {
      * @return
      */
     List<Item> queryItemList();
+
+    /**
+     * 通过分类获取列表
+     */
+    List<Item> queryItemListByCategoryId(Integer categoryId);
 }
