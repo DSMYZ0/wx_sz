@@ -31,4 +31,7 @@
         SELECT * FROM collection WHERE id=#{id}
     </select>
 
+    <select id="queryCollectionByUserIdAndItemId" resultMap="colectionMap">
+        SELECT * FROM collection WHERE user_id=#{userId} AND item_id=#{itemId}
+    </select>
 </mapper>

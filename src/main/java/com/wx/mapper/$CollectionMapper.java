@@ -21,4 +21,6 @@ public interface $CollectionMapper {
     List<$Collection> queryCollectionByUserId(Integer userId);
     //获取收藏详情
     $Collection queryCollectionById(Integer id);
+    //查询我是否被收藏过
+    List<$Collection> queryCollectionByUserIdAndItemId(@Param("userId") Integer userId,@Param("itemId") Integer itemId);
 }
