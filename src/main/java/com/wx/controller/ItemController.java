@@ -68,7 +68,7 @@ public class ItemController {
 
     @PostMapping("/addItem")
     public String addItem(@RequestBody ItemRequest request){
-
+        System.out.println(request);
         Item item = new Item();
         item.setId(request.getId());
         User user = userService.queryUserByOpenid(request.getUser().getOpenid());
