@@ -93,7 +93,7 @@ public class ItemController {
         if(imgs!=null && imgs.size()==1){
             item.setImg1(imgs.get(0));
         }
-        LOGGER.info("item={}",item);
+        //LOGGER.info("item={}",item);
         int row = itemService.addItem(item);
         if(row>0){
             return "ok";
