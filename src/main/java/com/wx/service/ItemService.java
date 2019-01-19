@@ -1,5 +1,6 @@
 package com.wx.service;
 
+import com.github.pagehelper.PageHelper;
 import com.wx.dto.ItemResponse;
 import com.wx.dto.ResponseResult;
 import com.wx.entity.Category;
@@ -77,22 +78,26 @@ public class ItemService {
     }
 
     @Transactional
-    public ResponseResult queryItemList(){
+    public ResponseResult queryItemList(int pageSize,int pageNo){
         ResponseResult responseResult = new ResponseResult();
         //寻物启事
         Category categoryxw = categoryMapper.queryCategoryByName(CategoryEnums.XWQS.getName());
+        PageHelper.startPage(pageNo,pageSize);
         List<Item> itemsxw = itemMapper.queryItemListByCategoryId(categoryxw.getId());
         responseResult.setXw(itemsxw);
         //寻人启事
         Category categoryxr = categoryMapper.queryCategoryByName(CategoryEnums.XRQS.getName());
+        PageHelper.startPage(pageNo,pageSize);
         List<Item> itemsxr = itemMapper.queryItemListByCategoryId(categoryxr.getId());
         responseResult.setXr(itemsxr);
         //寻宠启示
         Category categoryxc = categoryMapper.queryCategoryByName(CategoryEnums.XCQS.getName());
+        PageHelper.startPage(pageNo,pageSize);
         List<Item> itemsxc = itemMapper.queryItemListByCategoryId(categoryxc.getId());
         responseResult.setXc(itemsxc);
         //失物招领
         Category categorysz = categoryMapper.queryCategoryByName(CategoryEnums.SWZL.getName());
+        PageHelper.startPage(pageNo,pageSize);
         List<Item> itemssz = itemMapper.queryItemListByCategoryId(categorysz.getId());
         responseResult.setSz(itemssz);
         return responseResult;
